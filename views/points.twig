@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>level</th>
+                <th>per click</th>
+                <th>per sec</th>
+                <th>cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set total = 0 %}
+            
+            {% for i in 1..100 %}
+                <tr>
+                    {% set level = i %}
+                    {% set click = ((i * i) / 4) | round(0, 'floor') %}
+                    {% set sec = ((i  * i) / 2) | round(0, 'ceil') %}
+                    {% set cost = (i * i * i * 60) | round(0, 'ceil') %}
+
+                    {% if click < level %}
+                        {% set click = level %}
+                    {% endif %}
+
+                    {% if sec < level %}
+                        {% set sec = level %}
+                    {% endif %}
+
+                    {% set total = total + cost %}
+
+                    <td>{{ level }}</td>
+                    <td>{{ click }}</td>
+                    <td>{{ sec }}</td>
+                    <td>{{ cost }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    total: {{ total }}
+</body>
+</html>

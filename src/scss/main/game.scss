@@ -1,0 +1,208 @@
+body {
+    background-color: $main;
+    color: $light;
+    font-family: 'Russo One','Passion One','Indie Flower','Skranji',cursive;
+}
+
+.game-container {
+    width: 100%;
+    font-size: 140%;
+    min-height: 100vh;
+    padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    .top {
+        height: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .ranking {
+            .header {
+                text-align: center;
+                margin-bottom: 1rem;
+                color: gold;
+            }
+
+            ul {
+                li {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    .name {
+                        display: block;
+                        margin-right: .5rem;
+                        min-width: 200px;
+                    }
+
+                    .points {
+                        margin-left: auto;
+                    }
+                }
+            }
+        }
+
+        .values {
+            text-align: right;
+        }
+    }
+
+    .mid {
+        height: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .point {
+            position: absolute;
+            top: -25px;
+            left: 57%;
+            transform: translate(-50%, -100%);
+            text-shadow: 1px 1px 1px rgba($dark, .5);
+            animation-name: fly;
+            animation-duration: .7s;
+            animation-fill-mode: forwards;
+            user-select: none;
+            pointer-events: none;
+
+            &.increase {
+                color: $success;
+            }
+
+            &.decrease {
+                color: $danger;
+            }
+        }
+
+        button {
+            display: block;
+            padding: 1.5rem 3rem;
+            background-color: lighten($main, 25);
+            color: $light;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 0 2px 1px darken($main, 20);
+            outline: none;
+            transition: all .2s ease-in-out;
+            user-select: none;
+
+            &:hover {
+                transform: scale(1.3);
+            }
+        }
+    }
+
+    .bottom {
+        height: 40%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .statistics {
+            background-color: rgba($dark, .5);
+            border: 1px solid $dark;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+            > div {
+                &:first-child {
+                    margin-right: 1rem;
+                }
+            }
+
+            p {
+                padding: 0;
+                margin: 0;
+            }
+
+            .header {
+                padding: 1rem;
+                display: flex;
+                justify-content: start;
+                align-items: center;
+
+                .title {
+                    color: $pink;
+                }
+
+                .upgrade {
+                    margin-left: auto;
+                    background-color: lighten($main, 10);
+                    color: $light;
+                    border: $main;
+                    cursor: pointer;
+                    padding: .3rem .5rem;
+                    font-size: 80%;
+
+                    &.disabled {
+                        background-color: rgba(lighten($main, 10), .5);
+                    }
+                }
+            }
+
+            .body {
+                padding: 1rem;
+
+                p {
+                    margin-bottom: .3rem;
+                }
+            }
+        }
+    }
+}
+
+.ranking {
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+}
+
+@keyframes fly {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        top: -250px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .game-container {
+        .top {
+            align-items: flex-end;
+            flex-direction: column;
+
+            .ranking {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .bottom {
+            flex-direction: column;
+
+            .statistics {
+                width: 100%;
+                order: 1;
+
+                > div {
+                    width: 50%;
+                }
+            }
+
+            .chat {
+                order: 2;
+            }
+        }
+    }
+}

@@ -1,0 +1,66 @@
+{% extends "layouts/app.twig" %}
+
+{% block content %}
+
+    <div class="game-container">
+        <div class="top">
+            <div class="ranking">
+                <div class="header">Ranking</div>
+                <ul>
+                    <li>
+                        <div class="name">1. Graku</div>
+                        <div class="points">2015</div>
+                    </li>
+                    <li>
+                        <div class="name">2. abcabcabcabcabca</div>
+                        <div class="points">2137</div>
+                    </li>
+                    <li>
+                        <div class="name">3. test</div>
+                        <div class="points">421</div>
+                    </li>
+                </ul>
+            </div>
+            <div class="values">
+                <div>points: <span id="points">0</span></div>
+                <div>cash: <span id="cash">0</span></div>
+            </div>
+        </div>
+        <div class="mid">
+            <button id="clicker">Click</button>
+            {# <img id="clicker" src="{{ base_url() }}/dist/img/boobs.png" alt=""> #}
+        </div>
+        <div class="bottom">
+            <div class="chat">
+                <a class="btn" href="{{ path_for('auth.logout') }}">Wyloguj</a>
+            </div>
+            <div class="statistics">
+                <div>
+                    <div class="header">
+                        <span class="title">per click</span>
+                        <button id="buyClick" class="upgrade">buy</button>
+                    </div>
+                    <div class="body">
+                        <p>level: <span id="perClickLevel"></span></p>
+                        <p>now: <span id="perClick"></span></p>
+                        <p>on next level: <span id="perClickNextLevel"></span></p>
+                        <p>cost: <span id="perClickCost">0</span></p>
+                    </div>
+                </div>
+                <div>
+                    <div class="header">
+                        <span class="title">per sec</span>
+                        <button id="buySec" class="upgrade">buy</button>
+                    </div>
+                    <div class="body">
+                        <p>level: <span id="perSecLevel"></span></p>
+                        <p>now: <span id="perSec"></span></p>
+                        <p>on next level: <span id="perSecNextLevel"></span></p>
+                        <p>cost: <span id="perSecCost">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
