@@ -6,4 +6,3 @@ dist
 .env
 composer.lock
 package-lock.json
-clicker.sql
